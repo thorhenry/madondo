@@ -711,17 +711,25 @@ const styles = `
     .team-logo {
         width: 14px;
         height: 14px;
-        border-radius: 50%;
-        overflow: hidden;
+        border-radius: 0;
+        overflow: visible;
         margin-right: 6px;
         flex-shrink: 0;
+        border: none;
+        outline: none;
+        box-shadow: none;
+        background: transparent;
     }
     
     .team-logo img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        border-radius: 50%;
+        border-radius: 0;
+        border: none;
+        outline: none;
+        box-shadow: none;
+        background: transparent;
     }
     
     .table-legend {
@@ -1309,7 +1317,11 @@ const styles = `
     .team-logo-small {
         width: 20px;
         height: 20px;
-        border-radius: 50%;
+        border-radius: 0;
+        border: none;
+        outline: none;
+        box-shadow: none;
+        background: transparent;
     }
     
     .team-name {
@@ -1633,21 +1645,92 @@ const styles = `
     }
 
     .team-logo {
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        border-radius: 0;
         display: flex;
         align-items: center;
         justify-content: center;
-        overflow: hidden;
+        overflow: visible;
         flex-shrink: 0;
+        background: transparent;
+        border: none;
+        outline: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
     }
     
     .team-logo img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        border-radius: 50%;
+        border-radius: 0;
+        border: none;
+        outline: none;
+        box-shadow: none;
+        background: transparent;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Ensure no visible boundaries on team logos */
+    .team-logo *,
+    .team-logo-small *,
+    .team-details-logo *,
+    .team-modern-logo * {
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+        background: transparent !important;
+        border-radius: 0 !important;
+    }
+
+    /* Override any remaining team logo borders with maximum specificity */
+    .team-logo,
+    .team-logo img,
+    .team-logo-small,
+    .team-logo-small img,
+    .team-details-logo,
+    .team-details-logo img,
+    .team-modern-logo,
+    .team-modern-logo img,
+    .fixture-card .team .team-logo,
+    .fixture-card .team .team-logo img,
+    .fixture-card .team.home-team .team-logo,
+    .fixture-card .team.home-team .team-logo img {
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+        background: transparent !important;
+        border-radius: 0 !important;
+        overflow: visible !important;
+    }
+
+    /* Target all team logo images specifically */
+    img[src*="teams"],
+    img[src*="badges"],
+    img[src*="logos"] {
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+        background: transparent !important;
+        border-radius: 0 !important;
+    }
+
+    /* Force remove all borders from team logos in fixtures */
+    .fixtures-container .team-logo,
+    .fixtures-container .team-logo img,
+    .fixture-card .team-logo,
+    .fixture-card .team-logo img {
+        border: 0 !important;
+        outline: 0 !important;
+        box-shadow: none !important;
+        background: transparent !important;
+        border-radius: 0 !important;
+        overflow: visible !important;
+        padding: 0 !important;
+        margin: 0 !important;
     }
 
     .fixtures-grid {
@@ -1785,6 +1868,31 @@ const styles = `
         color: #ffffff;
         font-size: 1.5rem;
     }
+    
+    /* Home team specific layout */
+    .fixture-card .team.home-team .team-name {
+        flex-direction: row;
+    }
+    
+    .fixture-card .team.home-team .team-info {
+        order: 1;
+    }
+    
+    .fixture-card .team.home-team .team-logo {
+        order: 2;
+    }
+    
+    .fixture-card .team.home-team .red-cards-indicator {
+        font-size: 0.4rem;
+        margin-top: 2px;
+        position: absolute;
+        bottom: -8px;
+        right: 0;
+    }
+    
+    .fixture-card .team.home-team .team-info {
+        position: relative;
+    }
 
     .team-info {
         display: flex;
@@ -1796,7 +1904,7 @@ const styles = `
     .red-cards-indicator {
         display: flex;
         gap: 0.1rem;
-        font-size: 0.7rem;
+        font-size: 0.4rem;
         line-height: 1;
     }
 
@@ -1899,12 +2007,12 @@ const styles = `
         }
 
         .red-cards-indicator {
-            font-size: 0.5rem;
+            font-size: 0.35rem;
         }
         
         .team-logo {
-            width: 16px;
-            height: 16px;
+            width: 35px;
+            height: 35px;
         }
         
         .fixture-card .team-score {
@@ -1933,12 +2041,12 @@ const styles = `
         }
 
         .red-cards-indicator {
-            font-size: 0.4rem;
+            font-size: 0.3rem;
         }
         
         .team-logo {
-            width: 14px;
-            height: 14px;
+            width: 24px;
+            height: 24px;
         }
         
         .fixture-card .team-score {
@@ -1957,6 +2065,19 @@ const styles = `
         
         .fixture-card .team .team-logo {
             order: 1 !important;
+        }
+        
+        .fixture-card .team.home-team .team-logo {
+            order: 2 !important;
+        }
+        
+        .fixture-card .team.home-team .team-info {
+            order: 1 !important;
+        }
+        
+        .fixture-card .team.home-team .red-cards-indicator {
+            font-size: 0.35rem !important;
+            margin-top: 1px !important;
         }
         
         .fixture-card .team .team-info {
@@ -2678,9 +2799,216 @@ const styles = `
 
     /* Main Content */
     .player-content {
-        max-width: 600px;
+        max-width: none;
+        width: 100%;
         margin: 0 auto;
         padding: 2rem;
+    }
+
+    /* Large Screen Responsive Styles for Player Profile */
+    @media (min-width: 1400px) {
+        .player-profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .player-hero {
+            width: 100%;
+            max-width: none;
+            padding: 2rem 3rem;
+        }
+
+        .player-hero-simple {
+            max-width: none;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            text-align: left;
+            justify-content: center;
+        }
+
+        .player-avatar-simple {
+            width: 120px;
+            height: 120px;
+            font-size: 3rem;
+            margin: 0;
+            flex-shrink: 0;
+        }
+
+        .player-hero-details {
+            text-align: left;
+            flex: 1;
+        }
+
+        .player-name-simple {
+            font-size: 2.5rem;
+            justify-content: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .player-details-row {
+            justify-content: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .player-stats-row {
+            justify-content: flex-start;
+            gap: 2rem;
+        }
+
+        .hero-stat-simple {
+            min-width: 80px;
+            padding: 0.8rem 1.2rem;
+        }
+
+        .hero-stat-simple .stat-label {
+            font-size: 0.8rem;
+        }
+
+        .hero-stat-simple .stat-value {
+            font-size: 1.8rem;
+        }
+
+        .player-content {
+            max-width: none;
+            width: 100%;
+            padding: 2rem 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .player-info-section {
+            margin-bottom: 0;
+        }
+
+        .player-stats-section {
+            margin-bottom: 0;
+        }
+
+        .player-match-stats-section {
+            grid-column: 1 / -1;
+            margin-bottom: 2rem;
+        }
+
+        .player-actions {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .stats-compact-grid {
+            grid-template-columns: repeat(8, 1fr);
+            gap: 0.8rem;
+        }
+
+        .stat-compact {
+            padding: 0.8rem 0.4rem;
+        }
+
+        .stat-compact .stat-number-compact {
+            font-size: 1.6rem;
+        }
+
+        .stat-compact .stat-text-compact {
+            font-size: 0.65rem;
+        }
+
+        .match-stats-grid {
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1.2rem;
+        }
+
+        .match-stat-item {
+            padding: 1.2rem;
+        }
+
+        .match-stat-number {
+            font-size: 2rem;
+        }
+
+        .match-stat-label {
+            font-size: 0.95rem;
+        }
+    }
+
+    @media (min-width: 1800px) {
+        .player-hero {
+            max-width: none;
+            width: 100%;
+            padding: 2.5rem 4rem;
+        }
+
+        .player-hero-simple {
+            max-width: none;
+            width: 100%;
+            gap: 3rem;
+        }
+
+        .player-avatar-simple {
+            width: 140px;
+            height: 140px;
+            font-size: 3.5rem;
+        }
+
+        .player-name-simple {
+            font-size: 3rem;
+        }
+
+        .player-content {
+            max-width: none;
+            width: 100%;
+            padding: 2.5rem 4rem;
+            gap: 4rem;
+        }
+
+        .hero-stat-simple {
+            min-width: 100px;
+            padding: 1rem 1.5rem;
+        }
+
+        .hero-stat-simple .stat-value {
+            font-size: 2rem;
+        }
+
+        .stats-compact-grid {
+            grid-template-columns: repeat(9, 1fr);
+            gap: 1rem;
+        }
+
+        .stat-compact {
+            padding: 1rem 0.5rem;
+        }
+
+        .stat-compact .stat-number-compact {
+            font-size: 1.8rem;
+        }
+
+        .stat-compact .stat-text-compact {
+            font-size: 0.7rem;
+        }
+
+        .match-stats-grid {
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1.5rem;
+        }
+
+        .match-stat-item {
+            padding: 1.5rem;
+        }
+
+        .match-stat-number {
+            font-size: 2.2rem;
+        }
+
+        .match-stat-label {
+            font-size: 1rem;
+        }
     }
 
     .player-info-section {
@@ -3657,16 +3985,24 @@ const styles = `
     .team-details-logo {
         width: 45px;
         height: 45px;
-        border-radius: 50%;
-        overflow: hidden;
+        border-radius: 0;
+        overflow: visible;
         flex-shrink: 0;
-        border: 2px solid #00ff85;
+        border: none;
+        outline: none;
+        box-shadow: none;
+        background: transparent;
     }
     
     .team-details-logo img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        border-radius: 0;
+        border: none;
+        outline: none;
+        box-shadow: none;
+        background: transparent;
     }
     
     .team-details-info {
@@ -3971,6 +4307,63 @@ const styles = `
         gap: 2rem;
     }
 
+    /* Large screen responsive styles for traditional players grid */
+    @media (min-width: 1400px) {
+        .players-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .player-card {
+            border-radius: 8px;
+        }
+        
+        .player-avatar {
+            width: 80px;
+            height: 80px;
+            font-size: 2.5rem;
+        }
+        
+        .player-header {
+            padding: 1.5rem;
+        }
+        
+        .player-info {
+            padding: 1.2rem;
+        }
+    }
+
+    @media (min-width: 1800px) {
+        .players-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .player-card {
+            border-radius: 10px;
+        }
+        
+        .player-avatar {
+            width: 90px;
+            height: 90px;
+            font-size: 2.8rem;
+        }
+        
+        .player-header {
+            padding: 2rem;
+        }
+        
+        .player-info {
+            padding: 1.5rem;
+        }
+    }
+
     .player-card {
         background: rgba(255, 255, 255, 0.1);
         border-radius: 10px;
@@ -4023,9 +4416,276 @@ const styles = `
 
     /* Modern Players Page Layout */
     .players-modern-container {
-        max-width: 1200px;
+        max-width: 1400px;
         margin: 0 auto;
         padding: 2rem;
+    }
+
+    .teams-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        margin-top: 2rem;
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    /* Full width for search results on larger screens */
+    .teams-grid.search-results {
+        max-width: none !important;
+        width: 100% !important;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    }
+
+    .teams-grid.search-results .team-column {
+        min-width: 300px;
+    }
+
+    /* Make container full width when searching */
+    .players-modern-container.search-active {
+        max-width: none !important;
+        width: 100% !important;
+        padding: 2rem 1rem !important;
+    }
+
+    .team-column {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        padding: 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        min-width: 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .team-column-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .team-column-logo {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+    }
+
+    .team-column-name {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: white;
+        margin: 0;
+    }
+
+    .team-column-count {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.9rem;
+        margin: 0;
+    }
+
+    /* Large screen responsive styles for players page */
+    @media (min-width: 1400px) {
+        .players-modern-container {
+            max-width: 1600px;
+            padding: 2rem;
+        }
+        
+        .players-modern-container.search-active {
+            max-width: none !important;
+            width: 100% !important;
+            padding: 2rem 1rem !important;
+        }
+        
+        .players-search-sort {
+            justify-content: center !important;
+            max-width: 800px !important;
+            margin: 0 auto 2rem auto !important;
+        }
+        
+        .players-search {
+            max-width: 500px !important;
+        }
+        
+        .players-sort {
+            min-width: 200px !important;
+        }
+        
+        .teams-grid {
+            gap: 2.5rem;
+        }
+        
+        .teams-grid.search-results {
+            max-width: none !important;
+            width: 100% !important;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+            gap: 2rem !important;
+        }
+        
+        .team-column {
+            padding: 2rem;
+        }
+        
+        .team-column-logo {
+            width: 60px;
+            height: 60px;
+        }
+        
+        .team-column-name {
+            font-size: 1.5rem;
+        }
+        
+        .players-modern-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .player-modern-row {
+            padding: 0.8rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: none;
+            margin-bottom: 0.3rem;
+        }
+        
+        .player-modern-avatar {
+            width: 45px;
+            height: 45px;
+        }
+        
+        .player-modern-avatar i {
+            font-size: 1.2rem;
+        }
+        
+        .team-modern-logo {
+            width: 35px;
+            height: 35px;
+        }
+        
+        .team-modern-name {
+            font-size: 1.3rem;
+        }
+    }
+
+    @media (max-width: 1200px) {
+        .teams-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        .team-column {
+            padding: 1.2rem;
+        }
+        
+        .player-modern-avatar {
+            width: 35px;
+            height: 35px;
+            min-width: 35px;
+        }
+        
+        .player-modern-name {
+            font-size: 0.85rem;
+        }
+        
+        .player-modern-details {
+            font-size: 0.75rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .teams-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        
+        .team-column {
+            padding: 1rem;
+        }
+        
+        .team-column-logo {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .team-column-name {
+            font-size: 1.1rem;
+        }
+        
+        .player-modern-avatar {
+            width: 35px;
+            height: 35px;
+            min-width: 35px;
+        }
+        
+        .player-modern-row {
+            padding: 0.6rem;
+            gap: 0.6rem;
+        }
+    }
+
+    @media (min-width: 1800px) {
+        .players-modern-container {
+            max-width: 1600px;
+            padding: 2.5rem;
+        }
+        
+        .players-modern-container.search-active {
+            max-width: none !important;
+            width: 100% !important;
+            padding: 2.5rem 1rem !important;
+        }
+        
+        .players-search-sort {
+            justify-content: center !important;
+            max-width: 900px !important;
+            margin: 0 auto 2.5rem auto !important;
+        }
+        
+        .players-search {
+            max-width: 600px !important;
+        }
+        
+        .players-sort {
+            min-width: 220px !important;
+        }
+        
+        .teams-grid.search-results {
+            max-width: none !important;
+            width: 100% !important;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)) !important;
+            gap: 2.5rem !important;
+        }
+        
+        .players-modern-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        
+        .player-modern-row {
+            padding: 1rem;
+        }
+        
+        .player-modern-avatar {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .player-modern-avatar i {
+            font-size: 1.3rem;
+        }
+        
+        .team-modern-logo {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .team-modern-name {
+            font-size: 1.4rem;
+        }
     }
 
     .team-modern-section {
@@ -4079,11 +4739,14 @@ const styles = `
     .player-modern-row {
         display: flex;
         align-items: center;
-        gap: 1rem;
-        padding: 1rem;
+        gap: 0.8rem;
+        padding: 0.8rem;
         cursor: pointer;
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         transition: background-color 0.2s ease;
+        min-width: 0;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .player-modern-row:hover {
@@ -4091,14 +4754,15 @@ const styles = `
     }
 
     .player-modern-avatar {
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
         background: rgba(255, 255, 255, 0.1);
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
+        min-width: 40px;
     }
 
     .player-modern-avatar img {
@@ -4119,6 +4783,30 @@ const styles = `
         display: flex;
         flex-direction: column;
         gap: 0.3rem;
+        overflow: hidden;
+    }
+
+    .player-modern-name {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: white;
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .player-modern-details {
+        display: flex;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.8);
+        flex-wrap: wrap;
+    }
+
+    .player-modern-position,
+    .player-modern-number {
+        white-space: nowrap;
     }
 
     .player-modern-name {
@@ -4179,6 +4867,7 @@ const styles = `
         gap: 1.5rem;
         align-items: center;
         flex-wrap: wrap;
+        justify-content: center;
     }
 
     .players-search {
@@ -7082,12 +7771,12 @@ class FootballLeagueApp {
                                         <div class="fixture-teams">
                                             <div class="team home-team">
                                                 <div class="team-name">
-                                                    <div class="team-logo">
-                                                        <img src="${homeTeam ? homeTeam.logo : ''}" alt="${homeTeam ? homeTeam.name : fixture.homeTeam}" onerror="this.style.display='none'">
-                                                    </div>
                                                     <div class="team-info">
                                                         <span class="team-text">${homeTeam ? homeTeam.name : fixture.homeTeam}</span>
                                                         ${fixture.status === 'completed' ? `<div class="red-cards-indicator">${'🟥'.repeat(getRedCardCount(fixture.id, 'home'))}</div>` : ''}
+                                                    </div>
+                                                    <div class="team-logo">
+                                                        <img src="${homeTeam ? homeTeam.logo : ''}" alt="${homeTeam ? homeTeam.name : fixture.homeTeam}" onerror="this.style.display='none'">
                                                     </div>
                                                 </div>
                                                 ${fixture.score ? `<div class="team-score">${fixture.score.home}</div>` : ''}
@@ -7595,56 +8284,56 @@ class FootballLeagueApp {
             </div>
 
             <div class="players-modern-container" id="players-results-container">
-                ${Object.keys(websiteData.players).map(teamId => {
-                    const teamPlayers = websiteData.players[teamId];
-                    const teamData = teamsData[teamId];
-                    
-                    return `
-                        <div class="team-modern-section">
-                            <div class="team-modern-header">
-                                <div class="team-modern-info">
-                                    <img src="${teamData.logo}" alt="${teamData.name}" class="team-modern-logo" onerror="this.style.display='none'">
+                <div class="teams-grid">
+                    ${Object.keys(websiteData.players).map(teamId => {
+                        const teamPlayers = websiteData.players[teamId];
+                        const teamData = teamsData[teamId];
+                        
+                        return `
+                            <div class="team-column">
+                                <div class="team-column-header">
+                                    <img src="${teamData.logo}" alt="${teamData.name}" class="team-column-logo" onerror="this.style.display='none'">
                                     <div class="team-modern-details">
-                                        <h3 class="team-modern-name">${teamData.name}</h3>
-                                        <span class="team-modern-count">${teamPlayers.length} players</span>
+                                        <h3 class="team-column-name">${teamData.name}</h3>
+                                        <span class="team-column-count">${teamPlayers.length} players</span>
                                     </div>
                                 </div>
-                            </div>
-                            
-                            <div class="players-modern-list">
-                                ${teamPlayers.map(player => {
-                                    const playerStats = this.calculatePlayerStats(player.id);
-                                    return `
-                                        <div class="player-modern-row" onclick="app.loadPage('players', { playerId: '${player.id}' })">
-                                            <div class="player-modern-avatar">
-                                                <img src="assets/players/${player.id}.jpg" 
-                                                     alt="${player.name}" 
-                                                     style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"
-                                                     onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\\'fas fa-user\\'></i>';">
-                                            </div>
-                                            <div class="player-modern-content">
-                                                <div class="player-modern-name">
-                                                    ${player.name}
-                                                    <img src="assets/icons/verified-badge.svg" alt="Verified" class="verified-badge-modern">
-                                                    ${player.captain ? '<span class="captain-indicator">👑</span>' : ''}
+                                
+                                <div class="players-modern-list">
+                                    ${teamPlayers.map(player => {
+                                        const playerStats = this.calculatePlayerStats(player.id);
+                                        return `
+                                            <div class="player-modern-row" onclick="app.loadPage('players', { playerId: '${player.id}' })">
+                                                <div class="player-modern-avatar">
+                                                    <img src="assets/players/${player.id}.jpg" 
+                                                         alt="${player.name}" 
+                                                         style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"
+                                                         onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\\'fas fa-user\\'></i>';">
                                                 </div>
-                                                <div class="player-modern-details">
-                                                    <span class="player-modern-position">${player.position}</span>
-                                                    <span class="player-modern-number">#${player.number}</span>
-                                                    ${player.captain ? '<span class="captain-text">(C)</span>' : ''}
-                                                </div>
+                                                <div class="player-modern-content">
+                                                    <div class="player-modern-name">
+                                                        ${player.name}
+                                                        <img src="assets/icons/verified-badge.svg" alt="Verified" class="verified-badge-modern">
+                                                        ${player.captain ? '<span class="captain-indicator">👑</span>' : ''}
+                                                    </div>
+                                                    <div class="player-modern-details">
+                                                        <span class="player-modern-position">${player.position}</span>
+                                                        <span class="player-modern-number">#${player.number}</span>
+                                                        ${player.captain ? '<span class="captain-text">(C)</span>' : ''}
+                                                    </div>
 
-                                                <div class="player-modern-hint">
-                                                    <i>View full profile</i>
+                                                    <div class="player-modern-hint">
+                                                        <i>View full profile</i>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    `;
-                                }).join('')}
+                                        `;
+                                    }).join('')}
+                                </div>
                             </div>
-                        </div>
-                    `;
-                }).join('')}
+                        `;
+                    }).join('')}
+                </div>
             </div>
         `;
     }
@@ -8535,7 +9224,7 @@ class FootballLeagueApp {
                     iconContent = `
                         <img src="${team.logo}" 
                              alt="${item.title}" 
-                             style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"
+                             style="width: 100%; height: 100%; object-fit: cover; border-radius: 0;"
                              onerror="this.style.display='none'; this.parentElement.innerHTML='🏆'; this.parentElement.style.background='${this.getTypeColor(item.type)}'; this.parentElement.style.color='white'; this.parentElement.style.fontWeight='bold'; this.parentElement.style.fontSize='1rem'; this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center';">
                     `;
                 } else {
@@ -10798,22 +11487,54 @@ const app = new FootballLeagueApp();
 function filterPlayers() {
     const searchInput = document.getElementById('players-search-input');
     const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
-    const playerRows = document.querySelectorAll('.player-modern-row');
+    const teamColumns = document.querySelectorAll('.team-column');
+    const teamsGrid = document.querySelector('.teams-grid');
+    const container = document.querySelector('.players-modern-container');
     
-    playerRows.forEach(row => {
-        const nameElement = row.querySelector('.player-modern-name');
-        const positionElement = row.querySelector('.player-modern-position');
-        const numberElement = row.querySelector('.player-modern-number');
+    // Add or remove search-results class based on whether there's a search term
+    if (teamsGrid) {
+        if (searchTerm.trim() !== '') {
+            teamsGrid.classList.add('search-results');
+        } else {
+            teamsGrid.classList.remove('search-results');
+        }
+    }
+    
+    // Add or remove search-active class from container
+    if (container) {
+        if (searchTerm.trim() !== '') {
+            container.classList.add('search-active');
+        } else {
+            container.classList.remove('search-active');
+        }
+    }
+    
+    teamColumns.forEach(teamColumn => {
+        const playerRows = teamColumn.querySelectorAll('.player-modern-row');
+        let hasVisiblePlayers = false;
         
-        const playerName = nameElement ? nameElement.textContent.toLowerCase() : '';
-        const playerPosition = positionElement ? positionElement.textContent.toLowerCase() : '';
-        const playerNumber = numberElement ? numberElement.textContent.toLowerCase() : '';
+        playerRows.forEach(row => {
+            const nameElement = row.querySelector('.player-modern-name');
+            const positionElement = row.querySelector('.player-modern-position');
+            const numberElement = row.querySelector('.player-modern-number');
+            
+            const playerName = nameElement ? nameElement.textContent.toLowerCase() : '';
+            const playerPosition = positionElement ? positionElement.textContent.toLowerCase() : '';
+            const playerNumber = numberElement ? numberElement.textContent.toLowerCase() : '';
+            
+            const matches = playerName.includes(searchTerm) || 
+                           playerPosition.includes(searchTerm) || 
+                           playerNumber.includes(searchTerm);
+            
+            row.style.display = matches ? 'flex' : 'none';
+            
+            if (matches) {
+                hasVisiblePlayers = true;
+            }
+        });
         
-        const matches = playerName.includes(searchTerm) || 
-                       playerPosition.includes(searchTerm) || 
-                       playerNumber.includes(searchTerm);
-        
-        row.style.display = matches ? 'flex' : 'none';
+        // Hide the entire team column if no players match the search
+        teamColumn.style.display = hasVisiblePlayers ? 'block' : 'none';
     });
 }
 
