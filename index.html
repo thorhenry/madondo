@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Madondo League - Football League</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="assets/icons/madondo.png" alt="Madondo League Logo" class="logo-icon">
+                <h1>Madondo League</h1>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#" data-page="home" class="nav-link active">Home</a></li>
+                    <li><a href="#" data-page="fixtures" class="nav-link">Fixtures</a></li>
+                    <li><a href="#" data-page="table" class="nav-link">Table</a></li>
+                    <li><a href="#" data-page="clubs" class="nav-link">Clubs</a></li>
+                    <li><a href="#" data-page="players" class="nav-link">Players</a></li>
+                    <li><a href="#" data-page="news" class="nav-link">News</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-input" placeholder="">
+                <button id="searchBtn"><i class="fas fa-search"></i></button>
+                <div id="searchSuggestions" class="search-suggestions"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Content will be dynamically loaded here -->
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                        <h3>Madondo League</h3>
+        <p>The official website of the Madondo League</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#" data-page="table">League Table</a></li>
+                    <li><a href="#" data-page="fixtures">Fixtures</a></li>
+                    <li><a href="#" data-page="news">Latest News</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Madondo League. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Search Results Modal -->
+    <div id="searchModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Search Results</h2>
+            <div id="searchResults"></div>
+        </div>
+    </div>
+
+    <!-- Floating AI Assistant -->
+    <div class="ai-floating-button" onclick="app.loadPage('ai')">
+        <i class="fas fa-robot"></i>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
