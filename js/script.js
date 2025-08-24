@@ -669,6 +669,28 @@ const styles = `
         flex-shrink: 0;
     }
     
+    /* League Stats specific player avatar - keep small */
+    .league-table .player-avatar {
+        width: 24px !important;
+        height: 24px !important;
+        font-size: 0.75rem !important;
+    }
+    
+    /* Fallback for players without images in League Stats */
+    .league-table .player-avatar:not([src*=".jpg"]):not([src*=".jpeg"]):not([src*=".png"])::before {
+        content: '⚽';
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        background: #00ff85;
+        color: white;
+        border-radius: 50%;
+        font-weight: bold;
+        font-size: 0.75rem;
+    }
+    
     .player-avatar img {
         width: 100%;
         height: 100%;
@@ -5262,6 +5284,13 @@ const styles = `
             font-size: 2.5rem;
         }
         
+        /* League Stats specific - keep player avatars small */
+        .league-table .player-avatar {
+            width: 16px !important;
+            height: 16px !important;
+            font-size: 0.5rem !important;
+        }
+        
         .fixture-card {
             flex-direction: column;
             text-align: center;
@@ -5702,6 +5731,13 @@ const styles = `
             width: 60px;
             height: 60px;
             font-size: 1.8rem;
+        }
+        
+        /* League Stats specific - keep player avatars small */
+        .league-table .player-avatar {
+            width: 16px !important;
+            height: 16px !important;
+            font-size: 0.5rem !important;
         }
         
         .club-info,
@@ -6895,18 +6931,8 @@ class FootballLeagueApp {
                                 .map((player, index) => `
                                     <tr>
                                         <td>${index + 1}</td>
-                                        <td>
-                                            <div class="player-row">
-                                                <img src="${player.image}" alt="${player.name}" class="player-avatar" onerror="this.style.display='none'">
-                                                <span>${player.name}</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="team-row">
-                                                <img src="${teamsData[player.teamId]?.logo}" alt="${player.teamName}" class="team-logo" onerror="this.style.display='none'">
-                                                <span>${player.teamName}</span>
-                                            </div>
-                                        </td>
+                                        <td>${player.name}</td>
+                                        <td>${player.teamName}</td>
                                         <td class="goals-highlight">${player.stats.totalGoals}</td>
                                     </tr>
                                 `).join('')}
@@ -6930,18 +6956,8 @@ class FootballLeagueApp {
                                 .map((player, index) => `
                                     <tr>
                                         <td>${index + 1}</td>
-                                        <td>
-                                            <div class="player-row">
-                                                <img src="${player.image}" alt="${player.name}" class="player-avatar" onerror="this.style.display='none'">
-                                                <span>${player.name}</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="team-row">
-                                                <img src="${teamsData[player.teamId]?.logo}" alt="${player.teamName}" class="team-logo" onerror="this.style.display='none'">
-                                                <span>${player.teamName}</span>
-                                            </div>
-                                        </td>
+                                        <td>${player.name}</td>
+                                        <td>${player.teamName}</td>
                                         <td class="assists-highlight">${player.stats.totalAssists}</td>
                                     </tr>
                                 `).join('')}
