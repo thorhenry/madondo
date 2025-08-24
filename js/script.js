@@ -107,19 +107,20 @@ const styles = `
     }
 
     .search-input::placeholder {
-        animation: typing 3s infinite;
-        background: linear-gradient(90deg, #6c757d, #00ff85, #6c757d);
-        background-size: 200% 100%;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        transition: all 0.5s ease;
+        color: rgba(255, 255, 255, 0.6);
+        font-weight: 400;
+        text-shadow: none !important;
+        box-shadow: none !important;
+        -webkit-text-shadow: none !important;
+        -moz-text-shadow: none !important;
     }
 
     .search-input:focus::placeholder {
-        animation: none;
-        background: #6c757d;
-        -webkit-text-fill-color: #6c757d;
+        color: rgba(255, 255, 255, 0.4);
+        text-shadow: none !important;
+        box-shadow: none !important;
+        -webkit-text-shadow: none !important;
+        -moz-text-shadow: none !important;
     }
 
     @keyframes typing {
@@ -296,37 +297,78 @@ const styles = `
     }
 
     .search-container:hover {
-        background: rgba(255, 255, 255, 0.15);
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-        transform: translateY(-2px);
+        background: transparent !important;
+        box-shadow: none !important;
+        transform: none !important;
     }
 
     .search-container:focus-within {
-        background: rgba(255, 255, 255, 0.2);
-        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
-        border-color: rgba(0, 255, 133, 0.5);
+        background: transparent !important;
+        box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        -moz-box-shadow: none !important;
+    }
+
+    /* Global input shadow override */
+    input[type="text"]:focus,
+    input[type="search"]:focus {
+        outline: none !important;
+        box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        -moz-box-shadow: none !important;
+        text-shadow: none !important;
+        -webkit-text-shadow: none !important;
+        -moz-text-shadow: none !important;
     }
 
     #searchInput {
-        background: transparent;
-        border: none;
-        outline: none;
+        background: transparent !important;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        outline: none !important;
         color: white;
         font-size: 0.95rem;
         width: 220px;
         padding: 0.8rem 1.2rem;
         border-radius: 25px;
         transition: all 0.3s ease;
+        backdrop-filter: none !important;
+        box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        -moz-box-shadow: none !important;
+        text-shadow: none !important;
+        -webkit-text-shadow: none !important;
+        -moz-text-shadow: none !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: none !important;
+        appearance: none !important;
     }
 
     #searchInput::placeholder {
-        color: rgba(255, 255, 255, 0.7);
-        font-weight: 300;
+        color: rgba(255, 255, 255, 0.6);
+        font-weight: 400;
+        text-shadow: none !important;
+        box-shadow: none !important;
+        -webkit-text-shadow: none !important;
+        -moz-text-shadow: none !important;
+    }
+
+    #searchInput:hover {
+        border-color: rgba(255, 255, 255, 0.4);
+        background: transparent !important;
+        box-shadow: none !important;
     }
 
     #searchInput:focus {
-        background: rgba(255, 255, 255, 0.1);
-        box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-color: #00ff85;
+        background: transparent !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+        -webkit-box-shadow: none !important;
+        -moz-box-shadow: none !important;
+        text-shadow: none !important;
+        -webkit-text-shadow: none !important;
+        -moz-text-shadow: none !important;
+        outline: none !important;
     }
 
     #searchBtn {
@@ -5823,14 +5865,14 @@ const websiteData = {
     
     players: {
         'sleek': [
-            { id: "ryan", name: "Ryan", position: "Defender", age: 25, nationality: "Ugandan", number: 5, captain: false },
+            { id: "ryan", name: "Ahabwe Ryan", position: "Defender", age: 25, nationality: "Ugandan", number: 4, captain: false },
             { id: "benja", name: "Benja", position: "Defender", age: 24, nationality: "Ugandan", number: 2, captain: false },
             { id: "wycliffe", name: "Wycliffe", position: "Striker", age: 26, nationality: "Ugandan", number: 9, captain: false },
-            { id: "faye", name: "Faye", position: "Defender", age: 23, nationality: "Ugandan", number: 4, captain: false },
+            { id: "faye", name: "Faye", position: "Defender", age: 23, nationality: "Ugandan", number: 5, captain: false },
             { id: "mike", name: "Mike", position: "Midfielder", age: 27, nationality: "Ugandan", number: 8, captain: false },
             { id: "jemo", name: "Jemo Young", position: "Striker", age: 22, nationality: "Ugandan", number: 11, captain: false },
             { id: "oscar", name: "Oscar", position: "Midfielder", age: 25, nationality: "Ugandan", number: 7, captain: false },
-            { id: "offer", name: "Offer", position: "Midfielder", age: 23, nationality: "Ugandan", number: 10, captain: true }
+            { id: "offer", name: "Offer", position: "Midfielder", age: 26, nationality: "Ugandan", number: 10, captain: true }
         ],
         'lablues': [
         { id: "marvin", name: "Marvin", position: "Midfielder", age: 32, nationality: "Uganda", number: 10, captain: false },
@@ -5846,7 +5888,7 @@ const websiteData = {
             { id: "parteymo", name: "Parteymo", position: "Midfielder", age: 26, nationality: "Ugandan", number: 8, captain: false },
             { id: "joel", name: "Joel", position: "Defender", age: 24, nationality: "Ugandan", number: 2, captain: false },
             { id: "george", name: "George", position: "Defender", age: 25, nationality: "Ugandan", number: 3, captain: false },
-            { id: "yaya", name: "Yaya", position: "Striker", age: 23, nationality: "Ugandan", number: 7, captain: true },
+            { id: "yaya", name: "Yaya", position: "Striker", age: 16, nationality: "Ugandan", number: 7, captain: true },
             { id: "michael", name: "Michael", position: "Midfielder", age: 27, nationality: "Ugandan", number: 5, captain: false },
             { id: "sane", name: "Sane", position: "Midfielder", age: 22, nationality: "Ugandan", number: 6, captain: false },
             { id: "fahad", name: "Fahad", position: "Midfielder", age: 24, nationality: "Ugandan", number: 16, captain: false },
@@ -5873,7 +5915,7 @@ const websiteData = {
             playerOfTheMatch: { name: "Jemo Young", playerId: "jemo", team: "sleek" },
             home: {
                 starting: [
-                    { number: 4, name: "Ryan", playerId: "ryan", position: "DEF", captain: false, goals: 0, goalMinutes: [], assists: 0, assistMinutes: [], yellowCard: false, yellowCardMinutes: [], redCard: false, redCardMinutes: [], substituted: false, substitutionMinute: null },
+                    { number: 4, name: "Ahabwe Ryan", playerId: "ryan", position: "DEF", captain: false, goals: 0, goalMinutes: [], assists: 0, assistMinutes: [], yellowCard: false, yellowCardMinutes: [], redCard: false, redCardMinutes: [], substituted: false, substitutionMinute: null },
                     { number: 2, name: "Benja", playerId: "benja", position: "DEF", captain: false, goals: 1, goalMinutes: [14], goalTypes: ["open"], assists: 0, assistMinutes: [], yellowCard: true, yellowCardMinutes: [34], redCard: false, redCardMinutes: [], substituted: true, substitutionMinute: 55 },
                     { number: 8, name: "Jemo Young", playerId: "jemo", position: "MID", captain: false, goals: 1, goalMinutes: [23], goalTypes: ["open"], assists: 1, assistMinutes: [12], yellowCard: false, yellowCardMinutes: [], redCard: false, redCardMinutes: [], redCardFromTwoYellows: false, substituted: false, substitutionMinute: null },
                     { number: 10, name: "Offer", playerId: "offer", position: "MID", captain: true, goals: 2, goalMinutes: [67, 79], goalTypes: ["penalty", "open"], assists: 1, assistMinutes: [23], yellowCard: false, yellowCardMinutes: [], redCard: false, redCardMinutes: [], substituted: true, substitutionMinute: 82 },
@@ -5937,7 +5979,7 @@ const websiteData = {
             playerOfTheMatch: { name: "Benja", playerId: "benja", team: "sleek" },
             home: {
                 starting: [
-                    { number: 4, name: "Ryan", playerId: "ryan", position: "DEF", captain: false, goals: 0, goalMinutes: [], assists: 0, assistMinutes: [], yellowCard: false, yellowCardMinutes: [], redCard: false, redCardMinutes: [], substituted: false, substitutionMinute: null },
+                    { number: 4, name: "Ahabwe Ryan", playerId: "ryan", position: "DEF", captain: false, goals: 0, goalMinutes: [], assists: 0, assistMinutes: [], yellowCard: false, yellowCardMinutes: [], redCard: false, redCardMinutes: [], substituted: false, substitutionMinute: null },
                     { number: 2, name: "Benja", playerId: "benja", position: "DEF", captain: false, goals: 1, goalMinutes: [54], goalTypes: ["open"], assists: 0, assistMinutes: [], yellowCard: false, yellowCardMinutes: [], redCard: false, redCardMinutes: [], substituted: true, substitutionMinute: 45 },
                     { number: 8, name: "Jemo Young", playerId: "jemo", position: "MID", captain: false, goals: 0, goalMinutes: [], goalTypes: [], assists: 0, assistMinutes: [], yellowCard: false, yellowCardMinutes: [], redCard: false, redCardMinutes: [], redCardFromTwoYellows: false, substituted: false, substitutionMinute: null },
                     { number: 10, name: "Offer", playerId: "offer", position: "MID", captain: true, goals: 0, goalMinutes: [], goalTypes: [], assists: 1, assistMinutes: [54], yellowCard: false, yellowCardMinutes: [], redCard: false, redCardMinutes: [], substituted: true, substitutionMinute: 79 },
@@ -6704,9 +6746,9 @@ class FootballLeagueApp {
                             <tr>
                                 <th>Pos</th>
                                 <th>Team</th>
-                                <th>PL</th>
-                                <th>W</th>
+                                <th>P</th>
                                 <th>GD</th>
+                                <th>Pts</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -6722,8 +6764,8 @@ class FootballLeagueApp {
                                         </div>
                                     </td>
                                     <td>${team.played}</td>
-                                    <td>${team.won}</td>
                                     <td>${team.goalDifference > 0 ? '+' : ''}${team.goalDifference}</td>
+                                    <td><strong>${team.points}</strong></td>
                                 </tr>
                             `).join('')}
                         </tbody>
@@ -7346,10 +7388,10 @@ class FootballLeagueApp {
                         <div class="player-hero">
                             <div class="player-hero-simple">
                                 <div class="player-avatar-simple">
-                                    ${player.id === 'offer' ? 
-                                        '<img src="assets/players/offer.JPG" alt="' + player.name + '" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">' : 
-                                        '<i class="fas fa-user"></i>'
-                                    }
+                                    <img src="assets/players/${player.id}.jpg" 
+                                         alt="${player.name}" 
+                                         style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"
+                                         onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\\'fas fa-user\\'></i>';">
                                 </div>
                                 <div class="player-hero-details">
                                     <h1 class="player-name-simple">
@@ -7559,10 +7601,10 @@ class FootballLeagueApp {
                                     return `
                                         <div class="player-modern-row" onclick="app.loadPage('players', { playerId: '${player.id}' })">
                                             <div class="player-modern-avatar">
-                                                ${player.id === 'offer' ? 
-                                                    '<img src="assets/players/offer.JPG" alt="' + player.name + '">' : 
-                                                    '<i class="fas fa-user"></i>'
-                                                }
+                                                <img src="assets/players/${player.id}.jpg" 
+                                                     alt="${player.name}" 
+                                                     style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"
+                                                     onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\\'fas fa-user\\'></i>';">
                                             </div>
                                             <div class="player-modern-content">
                                                 <div class="player-modern-name">
@@ -10408,7 +10450,8 @@ class FootballLeagueApp {
                     ...player,
                     teamName: teamName,
                     teamId: teamId,
-                    stats: stats
+                    stats: stats,
+                    image: `assets/players/${player.id}.jpg`
                 });
             });
         });
